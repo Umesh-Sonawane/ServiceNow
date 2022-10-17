@@ -159,9 +159,6 @@ Cisco_ImportInventory.prototype = {
             }else if (payload == "Unidentified Inventory Details") {
                 fetchApi = "unidentifiedInventoryDetails";
                 tableName = "unidentifiedInventoryDetails";
-            }else if (payload == "Unidentified Inventory Summary") {
-                fetchApi = "unidentifiedInventorysummary";
-                tableName = "unidentifiedInventorysummary";
             }
 
 
@@ -291,8 +288,7 @@ Cisco_ImportInventory.prototype = {
                 tableName = "placeInNetworkDump";
 			else if (parameter == "Unidentified Inventory Details")
                 tableName = "unidentifiedInventoryDetailsDump";
-			else if (parameter == "Unidentified Inventory Summary")
-                tableName = "unidentifiedInventorysummaryDump";
+			
 
             gs.info("Import inventory Details table " + tableName);
             this.daoScript.insertIntoIntermediateDump(tableName,clientid, response);
@@ -380,8 +376,7 @@ Cisco_ImportInventory.prototype = {
                 tableName = "placeInNetworkDump";
 			else if (parameter == "Unidentified Inventory Details")
                 tableName = "unidentifiedInventoryDetailsDump";
-			else if (parameter == "Unidentified Inventory Summary")
-                tableName = "unidentifiedInventorysummaryDump";
+		
             this.daoScript.insertIntoIntermediateDump(tableName,reference.customer_id, this.appUtil.parse(reference.payload + ''));
         } catch (e) {
             this.logger.error("Exception caught inside Cisco_ImportInventory.processInventoryResponse while processing processing response JSON. Error :- " + e);
@@ -393,13 +388,13 @@ Cisco_ImportInventory.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-10-15 13:51:14</sys_created_on>
         <sys_id>b8d9613a2f7310108956ea5ef699b617</sys_id>
-        <sys_mod_count>134</sys_mod_count>
+        <sys_mod_count>135</sys_mod_count>
         <sys_name>Cisco_ImportInventory</sys_name>
         <sys_package display_value="Cisco BCS Operational Insights" source="x_caci_cisco_bcs">56b8d9362f3310108956ea5ef699b62d</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Cisco BCS Operational Insights">56b8d9362f3310108956ea5ef699b62d</sys_scope>
         <sys_update_name>sys_script_include_b8d9613a2f7310108956ea5ef699b617</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-09-01 05:00:35</sys_updated_on>
+        <sys_updated_on>2022-09-20 09:20:34</sys_updated_on>
     </sys_script_include>
 </record_update>

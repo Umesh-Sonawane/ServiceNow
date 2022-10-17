@@ -12,7 +12,9 @@
 	var device_id = parent.deviceid;
 	gs.info('device_id reset: '+device_id);
 	//var dev_reset = current.deviceid.toString();
+	current.addQuery('customer_id',parent.customer_id);
 	current.addQuery("device_id",device_id);
+	
 
 })(current, parent);]]></query_with>
         <reference_field>device_asset_ref</reference_field>
@@ -22,14 +24,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-03-29 11:25:03</sys_created_on>
         <sys_id>e613e61d976a01108986fef3a253af0d</sys_id>
-        <sys_mod_count>22</sys_mod_count>
+        <sys_mod_count>23</sys_mod_count>
         <sys_name>Devices</sys_name>
         <sys_package display_value="Cisco BCS Operational Insights" source="x_caci_cisco_bcs">56b8d9362f3310108956ea5ef699b62d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Cisco BCS Operational Insights">56b8d9362f3310108956ea5ef699b62d</sys_scope>
         <sys_update_name>sys_relationship_e613e61d976a01108986fef3a253af0d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-06-23 03:39:50</sys_updated_on>
+        <sys_updated_on>2022-09-20 07:52:09</sys_updated_on>
     </sys_relationship>
     <sys_translated_text action="delete_multiple" query="documentkey=e613e61d976a01108986fef3a253af0d"/>
 </record_update>

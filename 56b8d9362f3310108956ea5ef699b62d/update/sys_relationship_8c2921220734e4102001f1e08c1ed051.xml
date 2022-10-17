@@ -14,6 +14,7 @@
 	var dev_arr = [];
 	var nugget = new GlideRecord("x_caci_cisco_bcs_cisco_cbp_details");
 	nugget.addQuery("bp_nugget_id",cbp);
+	nugget.addQuery('customer_id',parent.customer_id);
 	nugget.query();
 	while(nugget.next())
 		dev_arr.push(nugget.device_id+"");
@@ -35,14 +36,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-12-03 12:23:43</sys_created_on>
         <sys_id>8c2921220734e4102001f1e08c1ed051</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>Devices</sys_name>
         <sys_package display_value="Cisco BCS Operational Insights" source="x_caci_cisco_bcs">56b8d9362f3310108956ea5ef699b62d</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Cisco BCS Operational Insights">56b8d9362f3310108956ea5ef699b62d</sys_scope>
         <sys_update_name>sys_relationship_8c2921220734e4102001f1e08c1ed051</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-06-23 03:41:34</sys_updated_on>
+        <sys_updated_on>2022-09-20 07:50:05</sys_updated_on>
     </sys_relationship>
     <sys_translated_text action="delete_multiple" query="documentkey=8c2921220734e4102001f1e08c1ed051"/>
 </record_update>

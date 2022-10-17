@@ -76,11 +76,11 @@ Cisco_DAOScript.prototype = {
 
             "placeInNetworkDump": "x_caci_cisco_bcs_cisco_place_in_network_dump",
             "unidentifiedInventoryDetailsDump": "x_caci_cisco_bcs_unidentified_inventory_details_dump",
-            "unidentifiedInventorysummaryDump": "x_caci_cisco_bcs_cisco_unidentified_inventory_summary_dump",
+            //"unidentifiedInventorysummaryDump": "x_caci_cisco_bcs_cisco_unidentified_inventory_summary_dump",
 
             "placeInNetwork": "x_caci_cisco_bcs_place_in_network",
-            "unidentifiedInventoryDetails": "x_caci_cisco_bcs_unidentified_inventory_details",
-            "unidentifiedInventorysummary": "x_caci_cisco_bcs_unidentified_inventory_summary"
+            "unidentifiedInventoryDetails": "x_caci_cisco_bcs_unidentified_inventory_details"
+            //"unidentifiedInventorysummary": "x_caci_cisco_bcs_unidentified_inventory_summary"
         };
         this.property = {
             "retentionPeriod": gs.getProperty("x_caci_cisco_bcs.retention.period"),
@@ -616,8 +616,8 @@ Cisco_DAOScript.prototype = {
             "softwaretrackReccommendationsDump": this.table.softwaretrackReccommendations,
             "syslogDump": this.table.syslogDaily,
             "placeInNetworkDump": this.table.placeInNetwork,
-            "unidentifiedInventoryDetailsDump": this.table.unidentifiedInventoryDetails,
-            "unidentifiedInventorysummaryDump": this.table.unidentifiedInventorysummary
+            "unidentifiedInventoryDetailsDump": this.table.unidentifiedInventoryDetails
+           // "unidentifiedInventorysummaryDump": this.table.unidentifiedInventorysummary
 
         };
         return dump_target_relation[tableName] + "";
@@ -655,8 +655,8 @@ Cisco_DAOScript.prototype = {
                 "softwaretrackReccommendationsDump": this.table.softwaretrackReccommendations,
                 "syslogDump": this.table.syslogDaily,
                 "placeInNetworkDump": this.table.placeInNetwork,
-                "unidentifiedInventoryDetailsDump": this.table.unidentifiedInventoryDetails,
-                "unidentifiedInventorysummaryDump": this.table.unidentifiedInventorysummary
+                "unidentifiedInventoryDetailsDump": this.table.unidentifiedInventoryDetails
+                //"unidentifiedInventorysummaryDump": this.table.unidentifiedInventorysummary
             };
 
             for (var table in dump_target_relation) {
@@ -710,8 +710,8 @@ Cisco_DAOScript.prototype = {
             "softwaretrackReccommendationsDump": this.table.softwaretrackReccommendations,
             "syslogDump": this.table.syslogDaily,
             "placeInNetworkDump": this.table.placeInNetwork,
-            "unidentifiedInventoryDetailsDump": this.table.unidentifiedInventoryDetails,
-            "unidentifiedInventorysummaryDump": this.table.unidentifiedInventorysummary
+            "unidentifiedInventoryDetailsDump": this.table.unidentifiedInventoryDetails
+            //"unidentifiedInventorysummaryDump": this.table.unidentifiedInventorysummary
         };
 
         for (var table in dump_target_relation) {
@@ -778,7 +778,7 @@ Cisco_DAOScript.prototype = {
             gs.setProperty("x_caci_cisco_bcs.core_company", "");
             var checkScheduleJob = this.checkWhetherAnyScheduleJobIsRunningOrNot();
             if (!checkScheduleJob) {
-                var applicationTables = ["processQueue", "hardwareLifecycle", "softwareLifecycle", "fieldNotices", "securityAdvisories", "cbpDetails", "cbpRules", "cbpSummary", "hardwareLifecycleBulletin", "softwareLifecycleBulletin", "securityAdvisoryBulletins", "fieldNoticesBulletin", "contractLifecycle", "cbpRulesReferences", "assets", "devices", "riskMitigationDetails", "riskMitigationSummary", "deviceResetCount", "deviceResetLastResetDetails", "deviceResetHistory", "cbpRulesReferences", "softwaretrackSummary", "softwaretrackMembers", "softwaretrackCompliance", "softwaretrackReccommendations", "syslogDaily", "deviceName", "devicehistoryRelation", "placeInNetwork", "unidentifiedInventoryDetails", "unidentifiedInventorysummary"];
+                var applicationTables = ["processQueue", "hardwareLifecycle", "softwareLifecycle", "fieldNotices", "securityAdvisories", "cbpDetails", "cbpRules", "cbpSummary", "hardwareLifecycleBulletin", "softwareLifecycleBulletin", "securityAdvisoryBulletins", "fieldNoticesBulletin", "contractLifecycle", "cbpRulesReferences", "assets", "devices", "riskMitigationDetails", "riskMitigationSummary", "deviceResetCount", "deviceResetLastResetDetails", "deviceResetHistory", "cbpRulesReferences", "softwaretrackSummary", "softwaretrackMembers", "softwaretrackCompliance", "softwaretrackReccommendations", "syslogDaily", "deviceName", "devicehistoryRelation", "placeInNetwork", "unidentifiedInventoryDetails"];
                 for (var i in applicationTables) {
                     var gr = new GlideRecord(this.table[applicationTables[i]]);
                     gr.deleteMultiple();
@@ -1397,13 +1397,13 @@ Cisco_DAOScript.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-10-15 13:48:31</sys_created_on>
         <sys_id>8319a1b62f7310108956ea5ef699b6e4</sys_id>
-        <sys_mod_count>344</sys_mod_count>
+        <sys_mod_count>345</sys_mod_count>
         <sys_name>Cisco_DAOScript</sys_name>
         <sys_package display_value="Cisco BCS Operational Insights" source="x_caci_cisco_bcs">56b8d9362f3310108956ea5ef699b62d</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Cisco BCS Operational Insights">56b8d9362f3310108956ea5ef699b62d</sys_scope>
         <sys_update_name>sys_script_include_8319a1b62f7310108956ea5ef699b6e4</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-09-16 14:53:34</sys_updated_on>
+        <sys_updated_on>2022-09-20 09:23:46</sys_updated_on>
     </sys_script_include>
 </record_update>

@@ -11,6 +11,7 @@
 
 	var sys_id = parent.sys_id;
     current.addQuery("syslog_id", sys_id);
+	current.addQuery('customer_id',parent.customer_id);
 
 })(current, parent);]]></query_with>
         <reference_field>deviceid</reference_field>
@@ -20,14 +21,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-04-01 12:47:30</sys_created_on>
         <sys_id>863f82de972e01108986fef3a253af4a</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>Device Name</sys_name>
         <sys_package display_value="Cisco BCS Operational Insights" source="x_caci_cisco_bcs">56b8d9362f3310108956ea5ef699b62d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Cisco BCS Operational Insights">56b8d9362f3310108956ea5ef699b62d</sys_scope>
         <sys_update_name>sys_relationship_863f82de972e01108986fef3a253af4a</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-05-10 15:57:41</sys_updated_on>
+        <sys_updated_on>2022-09-20 07:34:02</sys_updated_on>
     </sys_relationship>
     <sys_translated_text action="delete_multiple" query="documentkey=863f82de972e01108986fef3a253af4a"/>
 </record_update>
