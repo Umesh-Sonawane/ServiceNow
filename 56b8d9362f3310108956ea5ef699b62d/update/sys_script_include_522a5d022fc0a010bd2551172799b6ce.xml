@@ -2000,7 +2000,7 @@ Cisco_ClientServerBridge.prototype = Object.extendsObject(global.AbstractAjaxPro
         BCS.query();
         if (BCS.next()) {
             //gr.system_properties_value=current.value;
-            BCS.sys_updated_on = new GlideDateTime();
+            BCS.updated = new GlideDateTime();
             BCS.update();
             return Client_id;
         }
@@ -2012,7 +2012,7 @@ Cisco_ClientServerBridge.prototype = Object.extendsObject(global.AbstractAjaxPro
         if (gs.getUserID() != '6816f79cc0a8016401c5a33be04be441') {
             bcs.addQuery('users_list', user);
         }
-        bcs.orderByDesc('sys_updated_on');
+        bcs.orderByDesc('updated');
         bcs.setLimit(1);
         bcs.query();
         while (bcs.next()) {
@@ -2235,13 +2235,13 @@ Cisco_ClientServerBridge.prototype = Object.extendsObject(global.AbstractAjaxPro
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-10-25 15:02:47</sys_created_on>
         <sys_id>522a5d022fc0a010bd2551172799b6ce</sys_id>
-        <sys_mod_count>846</sys_mod_count>
+        <sys_mod_count>847</sys_mod_count>
         <sys_name>Cisco_ClientServerBridge</sys_name>
         <sys_package display_value="Cisco BCS Operational Insights" source="x_caci_cisco_bcs">56b8d9362f3310108956ea5ef699b62d</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Cisco BCS Operational Insights">56b8d9362f3310108956ea5ef699b62d</sys_scope>
         <sys_update_name>sys_script_include_522a5d022fc0a010bd2551172799b6ce</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-09-26 10:27:11</sys_updated_on>
+        <sys_updated_on>2022-10-11 08:59:21</sys_updated_on>
     </sys_script_include>
 </record_update>

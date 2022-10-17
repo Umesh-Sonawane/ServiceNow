@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_caci_cisco_bcs.CMDB_IRE</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>CMDB_IRE</name>
+        <script><![CDATA[var CMDB_IRE = Class.create();
+CMDB_IRE.prototype = {
+    initialize: function() {},
+    /*_________________________________________________________________
+       * Description:
+       * Parameters:
+       * Returns:
+       ________________________________________________________________*/
+    getDependentPayload: function(ci_sys_id, ci_class,demo) {
+
+        var finalobj = {};
+        var listOfCiObj = {};
+        var induvalRecordData = [];
+        var attributesArray = [];
+        var items = [];
+        var cmdb_ci_class=ci_class.toString();
+		var cmdb_ci_sysid=ci_sys_id.toString();
+        //items.push(getParaentCI_Payload(ci_sys_id, ci_class)); // add line
+        //  items.push(new CMDBscript().getParaentCI_Payload(ci_sys_id, ci_class));
+        items.push(this.getParaentCI_Payload(cmdb_ci_sysid, cmdb_ci_class,demo));
+        //items.push(new CMDB_IRE().getParaentCI_Payload(ci_sys_id, ci_class));
+        var relations = [];
+         i = 0;
+        var ci_idityfy_sys_id = cmdb_ci_sysid;
+        var ci_idityfy_class = cmdb_ci_class;
+        while (i < 50) {
+            var gr = new GlideRecord('cmdb_identifier');
+            gr.addQuery('applies_to=' + ci_idityfy_class + '^independent=false');
+            gr.query();
+            if (gr.next()) {
+                i++;
+                gs.info("test"+gr.independent);
+                var gr1 = new GlideRecord('cmdb_rel_ci');
+                gr1.addQuery('parent=' + ci_idityfy_sys_id); //parent.name=10.201.23.118
+                gr1.query();
+                if (gr1.next()) {
+                    var obj = {};
+                    gs.info(gr1.child);
+                    obj.sys_id = gr1.child.toString();
+                    obj.sys_class_name = gr1.child.sys_class_name.toString();
+                    obj.type = gr1.getDisplayValue('type');
+                    induvalRecordData.push(obj);
+                    gs.info(gr1.child.sys_class_name.toString());
+                    ci_idityfy_class = gr1.child.sys_class_name.toString();
+                    ci_idityfy_sys_id = gr1.child;
+                }
+            } else {
+                break;
+            }
+        }
+        //gs.info(JSON.stringify(induvalRecordData ,0,4));
+        for (var i = 0; i < induvalRecordData.length; i++) {
+            var objRelationPlayLoad = {};
+            var objectRelation = {};
+
+            var queryString = 'applies_to=' + induvalRecordData[i].sys_class_name;
+            var idenfy = new GlideRecord('cmdb_identifier');
+            idenfy.addQuery(queryString);
+            idenfy.query();
+            if (idenfy.next()) {
+                // gs.info(induvalRecordData[i].sys_class_name);
+                var identyfyEntry = new GlideRecord('cmdb_identifier_entry');
+                identyfyEntry.addQuery('table=' + induvalRecordData[i].sys_class_name);
+                identyfyEntry.query();
+                while (identyfyEntry.next()) {
+                    gs.info("values" + induvalRecordData[i].sys_id);
+                    attributesArray.push(identyfyEntry.attributes.toString());
+                }
+                //gs.info(attributesArray);
+                var attributesArrayString = attributesArray.toString();
+                var attributesArraySplit = attributesArrayString.split(',');
+                gs.info("attribute" + attributesArraySplit);
+                var values = {};
+                for (var j = 0; j < attributesArraySplit.length; j++) {
+                    //gs.info(attributesArraySplit[j].toString())
+                    //var test = attributesArraySplit[j].toString();
+                    gs.info("test" + attributesArraySplit[j]);
+                    var deviceattribute = new GlideRecord(induvalRecordData[i].sys_class_name);
+                    deviceattribute.addQuery("sys_id", induvalRecordData[i].sys_id);
+                    deviceattribute.query();
+                    if (deviceattribute.next()) {
+                        gs.info("record sys_id" + induvalRecordData[i].sys_id);
+                        if (deviceattribute.getValue(attributesArraySplit[j]) == null) {
+                            values[attributesArraySplit[j]] = '';
+                        } else {
+                            values[attributesArraySplit[j]] = deviceattribute.getValue(attributesArraySplit[j]);
+                        }
+                    }
+                } // gs.info(JSON.stringify(values ,0,4));
+                objRelationPlayLoad.className = induvalRecordData[i].sys_class_name;
+                objRelationPlayLoad.lookup = [];
+                objRelationPlayLoad.values = values;
+            }
+            items.push(objRelationPlayLoad);
+            objectRelation.type = induvalRecordData[i].type;
+            objectRelation.parent = i;
+            objectRelation.child = i + 1;
+            relations.push(objectRelation);
+        }
+        finalobj.items = items;
+        //finalobj.items.push(getParaentCI_Payload(ci_sys_id, ci_class));
+        finalobj.relations = relations;
+        gs.info("55final payload" + JSON.stringify(finalobj, 0, 4));
+        return finalobj;
+    },
+
+    getParaentCI_Payload: function(ciSysID, ciClass,demo) {
+        currentCI_attributesArray = [];
+        var currentCI = new GlideRecord(ciClass);
+        currentCI.addQuery('sys_id', ciSysID);
+        currentCI.query();
+        if (currentCI.next()) {
+            var currentCI_Identifire = new GlideRecord('cmdb_identifier');
+            currentCI_Identifire.addQuery('applies_to=' + ciClass);
+            currentCI_Identifire.query();
+            if (currentCI_Identifire.next()) {
+
+                var currentCI_identyfyEntry = new GlideRecord('cmdb_identifier_entry');
+                currentCI_identyfyEntry.addQuery('identifier=' + currentCI_Identifire.sys_id.toString());
+                currentCI_identyfyEntry.query();
+                while (currentCI_identyfyEntry.next()) {
+                    currentCI_attributesArray.push(currentCI_identyfyEntry.attributes.toString());
+                }
+            }
+            var attributesArrayString = currentCI_attributesArray.toString();
+            var currentCI_attributesArray = attributesArrayString.split(',');
+            var currentCiValues = {};
+            for (var j = 0; j < currentCI_attributesArray.length; j++) {
+
+
+
+                var test = currentCI_attributesArray[j].toString();
+                if (currentCI.getValue(test) == null) {
+                    currentCiValues[test] = '';
+                } else {
+                    currentCiValues[test] = currentCI.getValue(test);
+                }
+
+            }
+
+            var current_ci_obj_final = {};
+            current_ci_obj_final.className = ciClass.toString();
+            current_ci_obj_final.lookup = [];
+            //current_ci_obj_final.values = currentCiValues;
+		    current_ci_obj_final.values = demo;
+            //gs.info(JSON.stringify(current_ci_obj_final ,0,4));
+            return current_ci_obj_final;
+        }
+    },
+
+    type: 'CMDB_IRE'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-10-11 08:47:45</sys_created_on>
+        <sys_id>7720df5c2f62d51036e5136a2799b670</sys_id>
+        <sys_mod_count>17</sys_mod_count>
+        <sys_name>CMDB_IRE</sys_name>
+        <sys_package display_value="Cisco BCS Operational Insights" source="x_caci_cisco_bcs">56b8d9362f3310108956ea5ef699b62d</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Cisco BCS Operational Insights">56b8d9362f3310108956ea5ef699b62d</sys_scope>
+        <sys_update_name>sys_script_include_7720df5c2f62d51036e5136a2799b670</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-10-12 07:05:16</sys_updated_on>
+    </sys_script_include>
+</record_update>
