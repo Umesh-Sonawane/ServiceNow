@@ -24,12 +24,15 @@
 
 		var answer = response.responseXML.documentElement.getAttribute("answer");
 		var result = JSON.parse(answer);
-		<!-- answer = answer.split(","); -->
 		var unidentified = parseInt(result[0]);
+		var collector=parseInt(result[1]);
 		var data_array = [];
-		if(unidentified != 0)
-		data_array.push({name: 'Unidentified ['+unidentified+']', y: unidentified});
-				
+		if(collector!= 0)
+		for(var i in result[1]) {
+			
+			data_array.push([i +" ["+ result[1][i] + "]", parseInt(result[1][i])]);
+		}
+		
     var json = [{
         type: 'pie',
         name: 'Browser share',
@@ -38,7 +41,7 @@
     }];
 		
 		var color_array = ['#EDAC41', '#51B8E4','#FE7E63', '#FE7E63'];
-	   var title = (result+ "" == "0") ? "" : '<span style="font-size: 34px">'+result+'<br/>Unidentified<br/> Devices</span>';
+	   var title = (result[0]+ "" == "0") ? "" : '<span style="font-size: 34px">'+result[0]+'<br/>Unidentified<br/> Devices</span>';
 		
 		ScriptLoader.getScripts('x_caci_cisco_bcs.Cisco_RenderGraph.jsdbx', function() {
 
@@ -52,14 +55,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-07-26 05:23:47</sys_created_on>
         <sys_id>72630e272f78951036df837cf699b6cc</sys_id>
-        <sys_mod_count>32</sys_mod_count>
+        <sys_mod_count>40</sys_mod_count>
         <sys_name>Unidentified Inventory</sys_name>
         <sys_package display_value="Cisco BCS Operational Insights" source="x_caci_cisco_bcs">56b8d9362f3310108956ea5ef699b62d</sys_package>
         <sys_policy>protected</sys_policy>
         <sys_scope display_value="Cisco BCS Operational Insights">56b8d9362f3310108956ea5ef699b62d</sys_scope>
         <sys_update_name>content_block_programmatic_72630e272f78951036df837cf699b6cc</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-09-13 05:30:03</sys_updated_on>
+        <sys_updated_on>2022-09-22 13:33:18</sys_updated_on>
         <two_phase>false</two_phase>
     </content_block_programmatic>
 </record_update>

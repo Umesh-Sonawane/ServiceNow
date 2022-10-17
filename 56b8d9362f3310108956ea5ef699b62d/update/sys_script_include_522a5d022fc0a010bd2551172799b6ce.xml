@@ -111,6 +111,7 @@ Cisco_ClientServerBridge.prototype = Object.extendsObject(global.AbstractAjaxPro
         ga.query();
         while (ga.next()) {
             result['Severity: ' + ga.syslogeventseverity] = ga.getAggregate('COUNT', 'syslogeventseverity') + ' events';
+            // result['Devices with severity ' + ga.syslogeventseverity]= ga.getAggregate('COUNT', 'syslogeventseverity') + ' events';
         }
         output.push(result);
         var tot3 = 0;
@@ -967,7 +968,7 @@ Cisco_ClientServerBridge.prototype = Object.extendsObject(global.AbstractAjaxPro
             result = tot1;
 
         }
- 
+
         x_axis['Compliant'] = '' + result;
 
         var ga = new GlideAggregate('x_caci_cisco_bcs_cisco_software_track_summary');
@@ -983,7 +984,7 @@ Cisco_ClientServerBridge.prototype = Object.extendsObject(global.AbstractAjaxPro
             result = tot2;
 
         }
- 
+
         x_axis['Non-Compliant'] = '' + result;
         var ga = new GlideAggregate('x_caci_cisco_bcs_cisco_software_track_summary');
         ga.addQuery('customer_id', id);
@@ -2008,20 +2009,37 @@ Cisco_ClientServerBridge.prototype = Object.extendsObject(global.AbstractAjaxPro
     gettingUIRWidgetData: function() {
         var id = this.getclientid();
         //var UIRresult=0;
-		var result=[];
+        var result = [];
         var num = 0;
         var unidentified = new GlideAggregate('x_caci_cisco_bcs_unidentified_inventory_details');
         unidentified.addQuery('customer_id', id);
-        unidentified.addAggregate('COUNT', 'unidentifieddeviceipaddress');
-        unidentified.addNotNullQuery("unidentifieddeviceipaddress");
-        unidentified.groupBy('unidentifieddeviceipaddress');
+       // unidentified.addAggregate('COUNT', 'unidentifieddeviceipaddress');
+        unidentified.addNotNullQuery("collectorname");
+       // unidentified.groupBy('unidentifieddeviceipaddress');
         unidentified.query();
         while (unidentified.next()) {
             num++;
         }
-		result[0]=num;
+        result[0] = num;
         //UIRresult = num;
-		
+        var collector = {};
+        var URIcollector = new GlideAggregate('x_caci_cisco_bcs_unidentified_inventory_details');
+        URIcollector.addQuery('customer_id', id);
+        URIcollector.addAggregate('COUNT', 'collectorname');
+        URIcollector.groupBy('collectorname');
+        URIcollector.addNotNullQuery('collectorname');
+        URIcollector.query();
+        while (URIcollector.next()) {
+            //device_array.push(swVersion['unidentifieddevicescore'] + '');
+            var group = URIcollector['collectorname'] + "";
+            var group_arr = group.split(" ");
+            group = "";
+            for (var i in group_arr)
+                group = group + group_arr[i];
+            collector[group] = URIcollector.getAggregate('COUNT', 'collectorname');
+
+        }
+        result[1] = collector;
         return JSON.stringify(result);
     },
     getUIRDrilldownInfo: function() {
@@ -2150,52 +2168,51 @@ Cisco_ClientServerBridge.prototype = Object.extendsObject(global.AbstractAjaxPro
         var increcord = this.getParameter('sysparm_incidents');
         var myArray = recordId.split(',');
         for (var i = 0; i < myArray.length; i++) {
-			var incdata=increcord.split(',');
+            var incdata = increcord.split(',');
             var listObj = {};
-			for(var k=0;k<incdata.length;k++){
-            var updateDevice = new GlideRecord(tableName);	
-            updateDevice.addQuery('sys_id', myArray[i].toString());
-			updateDevice.addEncodedQuery("incident_referenceNOT LIKE"+incdata[k]+"^ORincident_referenceISEMPTY");
-            updateDevice.query();
-            while (updateDevice.next()) {
+            for (var k = 0; k < incdata.length; k++) {
+                var updateDevice = new GlideRecord(tableName);
+                updateDevice.addQuery('sys_id', myArray[i].toString());
+                updateDevice.addEncodedQuery("incident_referenceNOT LIKE" + incdata[k] + "^ORincident_referenceISEMPTY");
+                updateDevice.query();
+                while (updateDevice.next()) {
 
-                  var incidentID = updateDevice.incident_reference + ''; // add new lines
-                  updateDevice.incident_reference =incidentID+ "," + incdata[k];
-                  updateDevice.update();
-                for (var property in updateDevice) {
-                    if (!property.startsWith("sys_")) {
-                        listObj[updateDevice[property].getLabel()] = updateDevice.getDisplayValue(property);
+                    var incidentID = updateDevice.incident_reference + ''; // add new lines
+                    updateDevice.incident_reference = incidentID + "," + incdata[k];
+                    updateDevice.update();
+                    for (var property in updateDevice) {
+                        if (!property.startsWith("sys_")) {
+                            listObj[updateDevice[property].getLabel()] = updateDevice.getDisplayValue(property);
 
+                        }
                     }
+                    list.push(listObj);
+
+
                 }
-                list.push(listObj);
-
-
             }
         }
-		}
-		if(JSON.stringify(list, 0, 4)!=""){
-		
-        var recjson = JSON.stringify(list, 0, 4);
-        var recdetails;
-        var concattedjson = [];
-        var rec = increcord.toString();
-        var inrec = rec.split(',');
-        for (var j = 0; j < inrec.length; j++) {
-            var IncidentRealltionship = new GlideRecord('x_caci_cisco_bcs_incident_device_relationship');
-            IncidentRealltionship.addQuery('incident_reference', inrec[j].toString());
-            IncidentRealltionship.query();
-            while (IncidentRealltionship.next()) {
-                recdetails = IncidentRealltionship.list_of_devices;
-                concattedjson = JSON.stringify(JSON.parse(recdetails).concat(JSON.parse(recjson)),0, 4);
-                IncidentRealltionship.list_of_devices = concattedjson;
-                IncidentRealltionship.update();
-            }
-        }
+        if (JSON.stringify(list, 0, 4) != "") {
 
-		}
-		else 
-		return false;
+            var recjson = JSON.stringify(list, 0, 4);
+            var recdetails;
+            var concattedjson = [];
+            var rec = increcord.toString();
+            var inrec = rec.split(',');
+            for (var j = 0; j < inrec.length; j++) {
+                var IncidentRealltionship = new GlideRecord('x_caci_cisco_bcs_incident_device_relationship');
+                IncidentRealltionship.addQuery('incident_reference', inrec[j].toString());
+                IncidentRealltionship.query();
+                while (IncidentRealltionship.next()) {
+                    recdetails = IncidentRealltionship.list_of_devices;
+                    concattedjson = JSON.stringify(JSON.parse(recdetails).concat(JSON.parse(recjson)), 0, 4);
+                    IncidentRealltionship.list_of_devices = concattedjson;
+                    IncidentRealltionship.update();
+                }
+            }
+
+        } else
+            return false;
     },
     type: 'Cisco_ClientServerBridge'
 });]]></script>
@@ -2203,13 +2220,13 @@ Cisco_ClientServerBridge.prototype = Object.extendsObject(global.AbstractAjaxPro
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-10-25 15:02:47</sys_created_on>
         <sys_id>522a5d022fc0a010bd2551172799b6ce</sys_id>
-        <sys_mod_count>827</sys_mod_count>
+        <sys_mod_count>839</sys_mod_count>
         <sys_name>Cisco_ClientServerBridge</sys_name>
         <sys_package display_value="Cisco BCS Operational Insights" source="x_caci_cisco_bcs">56b8d9362f3310108956ea5ef699b62d</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Cisco BCS Operational Insights">56b8d9362f3310108956ea5ef699b62d</sys_scope>
         <sys_update_name>sys_script_include_522a5d022fc0a010bd2551172799b6ce</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-09-14 05:56:55</sys_updated_on>
+        <sys_updated_on>2022-09-22 13:28:55</sys_updated_on>
     </sys_script_include>
 </record_update>
