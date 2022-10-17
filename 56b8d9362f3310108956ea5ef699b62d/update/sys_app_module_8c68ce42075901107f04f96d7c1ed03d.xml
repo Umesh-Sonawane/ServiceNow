@@ -15,7 +15,7 @@
         <name>x_caci_cisco_bcs_align_cmdb</name>
         <order>200</order>
         <override_menu_roles>false</override_menu_roles>
-        <query>/x_caci_cisco_bcs_align_cmdb.do?sys_id=-1&amp;sys_is_list=true&amp;sys_target=x_caci_cisco_bcs_align_cmdb&amp;sysparm_checked_items=&amp;sysparm_fixed_query=&amp;sysparm_group_sort=&amp;sysparm_list_css=&amp;sysparm_query=&amp;sysparm_referring_url=x_caci_cisco_bcs_align_cmdb_list.do%3fsysparm_first_row%3d1&amp;sysparm_target=&amp;sysparm_view=</query>
+        <query>x_caci_cisco_bcs_align_cmdb_list.do</query>
         <report/>
         <roles>x_caci_cisco_bcs.align_cmdb_user,x_caci_cisco_bcs.cisco_bcs_user,x_caci_cisco_bcs.cisco_bcs_admin</roles>
         <sys_class_name>sys_app_module</sys_class_name>
@@ -24,7 +24,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>8c68ce42075901107f04f96d7c1ed03d</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>9</sys_mod_count>
         <sys_name>Align CMDB</sys_name>
         <sys_overrides/>
         <sys_package display_value="Cisco BCS Operational Insights" source="x_caci_cisco_bcs">56b8d9362f3310108956ea5ef699b62d</sys_package>
@@ -32,7 +32,7 @@
         <sys_scope display_value="Cisco BCS Operational Insights">56b8d9362f3310108956ea5ef699b62d</sys_scope>
         <sys_update_name>sys_app_module_8c68ce42075901107f04f96d7c1ed03d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-09-14 14:14:46</sys_updated_on>
+        <sys_updated_on>2022-09-16 12:50:20</sys_updated_on>
         <timeline_page/>
         <title>Align CMDB</title>
         <uncancelable>false</uncancelable>
