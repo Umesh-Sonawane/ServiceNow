@@ -34,8 +34,8 @@
 		target.update();
 	}
 
-	calculatedFieldValue = dao.calculateField("x_caci_cisco_bcs_cisco_software_lifecycle","","sw_id=" + target.sw_id + "");
-	dao.updateCalculatedField("x_caci_cisco_bcs_cisco_sw_eox_bulletins","sw_eox_id="+target.sw_id+"","devices",calculatedFieldValue);
+	calculatedFieldValue = dao.calculateField("x_caci_cisco_bcs_cisco_software_lifecycle","","sw_id=" + target.sw_id + "",target.customer_id);
+	dao.updateCalculatedField("x_caci_cisco_bcs_cisco_sw_eox_bulletins","sw_eox_id="+target.sw_id+"","devices",calculatedFieldValue,target.customer_id);
 
 	// 	target.update();
 
@@ -44,14 +44,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-02-23 14:12:51</sys_created_on>
         <sys_id>a4630ca207390110172aff808c1ed081</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>onAfter</sys_name>
         <sys_package display_value="Cisco BCS Operational Insights" source="x_caci_cisco_bcs">56b8d9362f3310108956ea5ef699b62d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Cisco BCS Operational Insights">56b8d9362f3310108956ea5ef699b62d</sys_scope>
         <sys_update_name>sys_transform_script_a4630ca207390110172aff808c1ed081</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-09-16 09:14:50</sys_updated_on>
+        <sys_updated_on>2022-09-26 05:01:27</sys_updated_on>
         <when>onAfter</when>
     </sys_transform_script>
 </record_update>

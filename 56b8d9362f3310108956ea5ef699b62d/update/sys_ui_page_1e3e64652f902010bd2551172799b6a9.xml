@@ -157,7 +157,7 @@ function renderUIScript(reportID,title,data,graphType,xAxis,yAxis) {
 			<div class="col-xs-8 SoftwareType">
 				<h1 class="header" > Devices Inventory</h1>
 			</div>
-			<div class="col-xs-4 SoftwareType">
+<!-- 			<div class="col-xs-4 SoftwareType">
 				<div class="stars"  style="float:right;">
 					<h4>Please provide your feedback for Devices Inventory</h4>
 					<div class="outer_stars">
@@ -172,7 +172,7 @@ function renderUIScript(reportID,title,data,graphType,xAxis,yAxis) {
 						<input class="star star-1" id="star-1" type="radio" name="star"  value="1" onclick="myFunction(1)"/>
 						<label class="star star-1" for="star-1"></label></div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 
 
@@ -270,13 +270,13 @@ function renderUIScript(reportID,title,data,graphType,xAxis,yAxis) {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-11-05 09:16:15</sys_created_on>
         <sys_id>1e3e64652f902010bd2551172799b6a9</sys_id>
-        <sys_mod_count>450</sys_mod_count>
+        <sys_mod_count>451</sys_mod_count>
         <sys_name>Devices_Drilldown_view</sys_name>
         <sys_package display_value="Cisco BCS Operational Insights" source="x_caci_cisco_bcs">56b8d9362f3310108956ea5ef699b62d</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Cisco BCS Operational Insights">56b8d9362f3310108956ea5ef699b62d</sys_scope>
         <sys_update_name>sys_ui_page_1e3e64652f902010bd2551172799b6a9</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-09-15 11:21:56</sys_updated_on>
+        <sys_updated_on>2022-09-26 08:38:27</sys_updated_on>
     </sys_ui_page>
 </record_update>

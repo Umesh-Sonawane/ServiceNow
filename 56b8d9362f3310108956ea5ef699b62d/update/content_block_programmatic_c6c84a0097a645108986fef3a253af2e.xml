@@ -10,7 +10,8 @@
         <programmatic_content><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
 <j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
 	<div class="form-group" style="height: 400px; overflow: hidden;" onclick="location.href='/ui_page.do?sys_id=69e8a4ca87aa0510a830fcc7cebb35a4'">
-		<div id="syslog_daily" style="font-size:20px; margin-left:12px; height:10%; text-align: left;"></div>
+		<!-- <div id="syslog_daily" style="font-size:20px; margin-left:12px; height:10%; text-align: left;"></div> -->
+		<div id="syslogdata" style="font-size:20px; margin-left:12px; height: 10%; text-align: left;"></div>
 		<div id="syslog" style="padding-left: 20px; width: 100%; height: 82%;"></div>
 	</div>
 
@@ -27,7 +28,9 @@
 		var answer = response.responseXML.documentElement.getAttribute("answer");
 
 		var result = JSON.parse(answer);
+		var data=parseInt(result[2]);
 		var data_array = [];
+		
 		for(var i in result[0]) {
 			data_array.push([i +" ["+ result[0][i] + "]", parseInt(result[0][i])]);
 		}
@@ -38,7 +41,7 @@
         innerSize: '70%',
         data: data_array 
     }];
-
+$j("#syslogdata").html('<b> Devices with severity 1 messages: '+data+'</b>');
 	var title = (result[1] + "" == "0") ? "" : '<span style="font-size: 34px">'+result[1]+'<br/>Message Types<br/> </span>';
 		ScriptLoader.getScripts('x_caci_cisco_bcs.Cisco_RenderGraph.jsdbx', function() {
 			x_caci_cisco_bcs.Cisco_RenderGraph.renderDonutChart("syslog", title, json,'');
@@ -51,14 +54,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-03-25 12:17:56</sys_created_on>
         <sys_id>c6c84a0097a645108986fef3a253af2e</sys_id>
-        <sys_mod_count>34</sys_mod_count>
+        <sys_mod_count>56</sys_mod_count>
         <sys_name>Syslog</sys_name>
         <sys_package display_value="Cisco BCS Operational Insights" source="x_caci_cisco_bcs">56b8d9362f3310108956ea5ef699b62d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Cisco BCS Operational Insights">56b8d9362f3310108956ea5ef699b62d</sys_scope>
         <sys_update_name>content_block_programmatic_c6c84a0097a645108986fef3a253af2e</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-08-25 10:03:30</sys_updated_on>
+        <sys_updated_on>2022-09-26 06:10:39</sys_updated_on>
         <two_phase>false</two_phase>
     </content_block_programmatic>
 </record_update>

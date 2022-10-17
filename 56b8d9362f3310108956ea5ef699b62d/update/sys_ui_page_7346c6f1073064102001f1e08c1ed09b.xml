@@ -188,7 +188,7 @@ function renderChart(div, title, output, graphType, xAxis, yaxis) {
 			</div>
 		<div class="col-xs-3">
 			</div>
-			<div class="col-xs-3">
+			<!-- <div class="col-xs-3">
 				<div class="stars"  style="float:right;">
 				<h4>Please provide your feedback for Configuration Best Practices</h4>
 				<div class="outer_stars">
@@ -204,7 +204,7 @@ function renderChart(div, title, output, graphType, xAxis, yaxis) {
 				<label class="star star-1" for="star-1"></label>
 				</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	
 	
@@ -328,13 +328,13 @@ font-family: FontAwesome;
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-12-01 06:24:21</sys_created_on>
         <sys_id>7346c6f1073064102001f1e08c1ed09b</sys_id>
-        <sys_mod_count>226</sys_mod_count>
+        <sys_mod_count>227</sys_mod_count>
         <sys_name>Cisco_CBP_Drilldown</sys_name>
         <sys_package display_value="Cisco BCS Operational Insights" source="x_caci_cisco_bcs">56b8d9362f3310108956ea5ef699b62d</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Cisco BCS Operational Insights">56b8d9362f3310108956ea5ef699b62d</sys_scope>
         <sys_update_name>sys_ui_page_7346c6f1073064102001f1e08c1ed09b</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-09-15 10:59:45</sys_updated_on>
+        <sys_updated_on>2022-09-26 08:37:36</sys_updated_on>
     </sys_ui_page>
 </record_update>

@@ -407,7 +407,7 @@ function loadMe()
 </div>
 </div>
 <div class="col-xs-3" ></div>
-<div class="col-xs-3" >
+<!-- <div class="col-xs-3" >
 <div class="row">
 <div class="stars" style="float:right;">
 <h4>Please provide your feedback for Syslogs</h4>
@@ -424,7 +424,7 @@ function loadMe()
 <label class="star star-1" for="star-1"></label></div>
 </div>
 </div>
-</div>
+</div> -->
 </div>
 </div>
 <br/>
@@ -446,13 +446,13 @@ function loadMe()
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-03-31 11:08:44</sys_created_on>
         <sys_id>69e8a4ca87aa0510a830fcc7cebb35a4</sys_id>
-        <sys_mod_count>284</sys_mod_count>
+        <sys_mod_count>285</sys_mod_count>
         <sys_name>syslog</sys_name>
         <sys_package display_value="Cisco BCS Operational Insights" source="x_caci_cisco_bcs">56b8d9362f3310108956ea5ef699b62d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Cisco BCS Operational Insights">56b8d9362f3310108956ea5ef699b62d</sys_scope>
         <sys_update_name>sys_ui_page_69e8a4ca87aa0510a830fcc7cebb35a4</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-09-15 11:22:50</sys_updated_on>
+        <sys_updated_on>2022-09-26 08:39:48</sys_updated_on>
     </sys_ui_page>
 </record_update>

@@ -106,6 +106,7 @@ Cisco_DAOScript.prototype = {
     },
     assetCalculatedFields: function(contract, target) {
         var grContract = new GlideRecord('x_caci_cisco_bcs_cisco_contract_lifecycle');
+		grContract.addQuery("customer_id",target.customer_id);
         if (grContract.get(contract + "")) {
 
             // expired_status
@@ -142,6 +143,7 @@ Cisco_DAOScript.prototype = {
 
     resetHistoryCalculatedFields: function(deviceId, target) {
         var grMitigation = new GlideRecord('x_caci_cisco_bcs_cisco_risk_mitigation_details');
+		grMitigation.addQuery('customer_id',target.customer_id);
         grMitigation.addQuery('deviceid', deviceId.toString());
         grMitigation.query();
         if (grMitigation.next()) {
@@ -150,6 +152,7 @@ Cisco_DAOScript.prototype = {
             target.update();
         }
         var rs = new GlideRecord("x_caci_cisco_bcs_cisco_device_reset_history");
+		rs.addQuery('customer_id',target.customer_id);
         rs.addQuery('deviceid', deviceId.toString());
         rs.query();
         if (rs.next()) {
@@ -176,6 +179,7 @@ Cisco_DAOScript.prototype = {
     swComplianceCalculatedFields: function(softwaretrackid, target) {
         var output = [];
         var gr_com = new GlideRecord('x_caci_cisco_bcs_cisco_sw_track_maintenance_upgrade_recommendations');
+		gr_com.addQuery("customer_id",target.customer_id);
         gr_com.addQuery('softwaretrackid', softwaretrackid.toString());
         gr_com.query();
         var count = 0;
@@ -193,6 +197,7 @@ Cisco_DAOScript.prototype = {
 
     swComplianceRecommendation: function(softwaretrackid, softwaretrackrecommendationhistory, target) {
         var gr_com = new GlideRecord('x_caci_cisco_bcs_cisco_software_track_summary');
+		gr_com.addQuery('customer_id',target.customer_id);
         gr_com.addQuery('softwaretrackid', softwaretrackid.toString());
         gr_com.query();
         if (gr_com.next()) {
@@ -467,10 +472,11 @@ Cisco_DAOScript.prototype = {
         }
     },
 
-    createsyslogReferences: function(selfFieldValue, targetField, targetSelfReference, target_sys_id, targetTable, updateTarget) {
+    createsyslogReferences: function(selfFieldValue, targetField, targetSelfReference, target_sys_id, targetTable, updateTarget,ClientId) {
 
         try {
             var grReferencedTable = new GlideRecord(targetTable);
+			grReferencedTable.addQuery('customer_id',ClientId);
             grReferencedTable.addQuery(targetField, selfFieldValue + "");
             grReferencedTable.query();
             var refSysId = "";
@@ -513,11 +519,12 @@ Cisco_DAOScript.prototype = {
         }
     },
 
-    calculateField: function(targetTableName, groupByField, query, fromSource) {
+    calculateField: function(targetTableName, groupByField, query, ClientId) {
         var i = 0;
         var grFN = new GlideAggregate(targetTableName); //call(TargettableName,"groupByField",Query,fromSource)
         if (groupByField)
             grFN.addAggregate('COUNT', groupByField);
+		grFN.addQuery('customer_id',ClientId);
         grFN.addEncodedQuery(query);
         grFN.query();
         while (grFN.next())
@@ -527,8 +534,9 @@ Cisco_DAOScript.prototype = {
 
     //updateCaluclatedField("x_caci_cisco_bcs_cisco_devices","device_id="+target.device_id+"","vulnerable_field_notices");
 
-    updateCalculatedField: function(tableName, query, calculatedFieldName, calculatedFieldValue) {
+    updateCalculatedField: function(tableName, query, calculatedFieldName, calculatedFieldValue,ClientId) {
         var gr = new GlideRecord(tableName);
+		gr.addQuery('customer_id',ClientId);
         gr.addEncodedQuery(query);
         gr.query();
         if (gr.next()) {
@@ -536,16 +544,18 @@ Cisco_DAOScript.prototype = {
             gr.update();
         }
     },
-    getDevicename: function(SelfFieldValue, Targetfield, TargetTable) {
+    getDevicename: function(SelfFieldValue, Targetfield, TargetTable,ClientId) {
         var grDeviceTable = new GlideRecord(TargetTable);
+		grDeviceTable.addQuery("customer_id",ClientId);
         grDeviceTable.addQuery(Targetfield, SelfFieldValue);
         grDeviceTable.query();
         while (grDeviceTable.next()) {
             return grDeviceTable.name;
         }
     },
-    getProductdetails: function(SelfFieldValue, Targetfield, TargetTable) {
+    getProductdetails: function(SelfFieldValue, Targetfield, TargetTable,ClientId) {
         var grProductid = new GlideRecord(TargetTable);
+		grProductid.addQuery("customer_id",ClientId);
         grProductid.addQuery(Targetfield, SelfFieldValue);
         grProductid.query();
         if (grProductid.next()) {
@@ -553,17 +563,19 @@ Cisco_DAOScript.prototype = {
             return grProductid.product_id;
         }
     },
-    getSoftwareVersion: function(SelfFieldValue, Targetfield, TargetTable) {
+    getSoftwareVersion: function(SelfFieldValue, Targetfield, TargetTable,ClientId) {
         var grSoftwareVersion = new GlideRecord(TargetTable);
+		grSoftwareVersion.addQuery("customer_id",ClientId);
         grSoftwareVersion.addQuery(Targetfield, SelfFieldValue);
         grSoftwareVersion.query();
         if (grSoftwareVersion.next()) {
             return grSoftwareVersion.sw_version;
         }
     },
-    crashRiskCategory: function(selfFieldValue, targetField, targetTable) {
+    crashRiskCategory: function(selfFieldValue, targetField, targetTable,ClientId) {
         var setfiedValue = selfFieldValue.toString();
         var grriskCategory = new GlideRecord(targetTable);
+		grriskCategory.addQuery("customer_id",ClientId);
         grriskCategory.addQuery(targetField, selfFieldValue);
         grriskCategory.query();
         if (grriskCategory.next()) {
@@ -573,9 +585,10 @@ Cisco_DAOScript.prototype = {
         }
     },
 
-    totalOfEvents: function(selfFieldValue, targetField, targetTable) {
+    totalOfEvents: function(selfFieldValue, targetField, targetTable,ClientId) {
         //var setfiedValue = parseInt(selfFieldValue);
         var aggEvent = new GlideAggregate(targetTable);
+		aggEvent.addQuery("customer_id",ClientId);
         aggEvent.addQuery(targetField, selfFieldValue);
         //aggEvent.addAggregate('SUM', 'eventcount');
         //aggEvent.setGroup('deviceid');
@@ -771,7 +784,7 @@ Cisco_DAOScript.prototype = {
         else
             return false;
     },
-    clearApplicationData: function() {
+    clearApplicationData: function(clientid) {
         try {
             this.logger.debug("Inside Cisco_DAOScript.clearApplicationData deleting application data.");
             gs.setProperty("x_caci_cisco_bcs.start.import", false);
@@ -781,6 +794,7 @@ Cisco_DAOScript.prototype = {
                 var applicationTables = ["processQueue", "hardwareLifecycle", "softwareLifecycle", "fieldNotices", "securityAdvisories", "cbpDetails", "cbpRules", "cbpSummary", "hardwareLifecycleBulletin", "softwareLifecycleBulletin", "securityAdvisoryBulletins", "fieldNoticesBulletin", "contractLifecycle", "cbpRulesReferences", "assets", "devices", "riskMitigationDetails", "riskMitigationSummary", "deviceResetCount", "deviceResetLastResetDetails", "deviceResetHistory", "cbpRulesReferences", "softwaretrackSummary", "softwaretrackMembers", "softwaretrackCompliance", "softwaretrackReccommendations", "syslogDaily", "deviceName", "devicehistoryRelation", "placeInNetwork", "unidentifiedInventoryDetails"];
                 for (var i in applicationTables) {
                     var gr = new GlideRecord(this.table[applicationTables[i]]);
+					gr.addQuery("customer_id",clientid);
                     gr.deleteMultiple();
                 }
 
@@ -1222,16 +1236,18 @@ Cisco_DAOScript.prototype = {
 
         return id;
     },
-    predictedimportanceDetails: function(selfFieldValue, targetField, targetTable) {
+    predictedimportanceDetails: function(selfFieldValue, targetField, targetTable,ClientId) {
         var pindetail = new GlideRecord(targetTable);
+		pindetail.addQuery("customer_id",ClientId);
         pindetail.addQuery(targetField, selfFieldValue);
         pindetail.query();
         if (pindetail.next()) {
             return pindetail.predictedimportance;
         }
     },
-    predictedroleDetails: function(selfFieldValue, targetField, targetTable) {
+    predictedroleDetails: function(selfFieldValue, targetField, targetTable,ClientId) {
         var pinpredictedimp = new GlideRecord(targetTable);
+		pinpredictedimp.addQuery("customer_id",ClientId);
         pinpredictedimp.addQuery(targetField, selfFieldValue);
         pinpredictedimp.query();
         if (pinpredictedimp.next()) {
@@ -1319,8 +1335,9 @@ Cisco_DAOScript.prototype = {
 
                     for (var j = 0; j < objMetaData.device.length; j++) {
 
-                        if (getDeviceList.getValue(objMetaData.device[j].toString())) {
-                           
+                        if (getDeviceList.getValue(objMetaData.device[j].toString())!='') {
+                           gs.info("cmdb"+objMetaData.cmdb[j].toString()+"   value  "+getDeviceList.getValue(objMetaData.device[j].toString()));
+							
                             cmdbData[objMetaData.cmdb[j].toString()] = getDeviceList.getValue(objMetaData.device[j].toString());
                         } else {
                            
@@ -1397,13 +1414,13 @@ Cisco_DAOScript.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-10-15 13:48:31</sys_created_on>
         <sys_id>8319a1b62f7310108956ea5ef699b6e4</sys_id>
-        <sys_mod_count>345</sys_mod_count>
+        <sys_mod_count>351</sys_mod_count>
         <sys_name>Cisco_DAOScript</sys_name>
         <sys_package display_value="Cisco BCS Operational Insights" source="x_caci_cisco_bcs">56b8d9362f3310108956ea5ef699b62d</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Cisco BCS Operational Insights">56b8d9362f3310108956ea5ef699b62d</sys_scope>
         <sys_update_name>sys_script_include_8319a1b62f7310108956ea5ef699b6e4</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-09-20 09:23:46</sys_updated_on>
+        <sys_updated_on>2022-09-26 10:24:21</sys_updated_on>
     </sys_script_include>
 </record_update>

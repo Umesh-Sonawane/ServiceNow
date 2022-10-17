@@ -328,7 +328,7 @@ function renderGroupChart(reportID, titleData, seriesData, graphType, xaxis, yAx
 				<h1 class="header" style="margin-left:20px" >Software Compliance</h1>
 			</div>
 		
-			<div class="col-xs-3">
+<!-- 			<div class="col-xs-3">
 				<div class="stars"  style="float:right;">
 					<h4>Please provide your feedback for Software Compliance</h4>
 					<div class="outer_stars">
@@ -343,7 +343,7 @@ function renderGroupChart(reportID, titleData, seriesData, graphType, xaxis, yAx
 						<input class="star star-1" id="star-1" type="radio" name="star"  value="1" onclick="myFunction(1)"/>
 						<label class="star star-1" for="star-1"></label></div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 
 
@@ -416,13 +416,13 @@ function renderGroupChart(reportID, titleData, seriesData, graphType, xaxis, yAx
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-03-24 12:11:44</sys_created_on>
         <sys_id>5dcdbc3f9752c1108986fef3a253aff8</sys_id>
-        <sys_mod_count>88</sys_mod_count>
+        <sys_mod_count>89</sys_mod_count>
         <sys_name>SW Compliance Drilldown</sys_name>
         <sys_package display_value="Cisco BCS Operational Insights" source="x_caci_cisco_bcs">56b8d9362f3310108956ea5ef699b62d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Cisco BCS Operational Insights">56b8d9362f3310108956ea5ef699b62d</sys_scope>
         <sys_update_name>sys_ui_page_5dcdbc3f9752c1108986fef3a253aff8</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-08-24 13:39:28</sys_updated_on>
+        <sys_updated_on>2022-09-26 08:39:18</sys_updated_on>
     </sys_ui_page>
 </record_update>
