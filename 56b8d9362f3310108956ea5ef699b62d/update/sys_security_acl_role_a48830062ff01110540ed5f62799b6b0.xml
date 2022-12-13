@@ -13,7 +13,7 @@
         <sys_update_name>sys_security_acl_role_a48830062ff01110540ed5f62799b6b0</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2022-07-21 07:56:03</sys_updated_on>
-        <sys_user_role display_value="x_caci_cisco_bcs.cisco_place_in_network_dump_user" name="x_caci_cisco_bcs.cisco_place_in_network_dump_user">7571f00e2fb01110540ed5f62799b6e5</sys_user_role>
+        <sys_user_role display_value="">7571f00e2fb01110540ed5f62799b6e5</sys_user_role>
         <transaction_id/>
     </sys_security_acl_role>
 </record_update>

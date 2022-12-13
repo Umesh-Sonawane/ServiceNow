@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="DELETE">
+        <active>true</active>
+        <copied_from/>
+        <description>Open "iPhone 6s" in the "Service Portal" portal with the following query params:
+Name = iPhone 6s
+</description>
+        <display_name>Open a Catalog Item (SP)</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>2</order>
+        <snapshot/>
+        <step_config display_value="Open a Catalog Item (SP)">e81f02dc73e703008e6b0d573cf6a76f</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-11-25 13:24:59</sys_created_on>
+        <sys_id>ac85c80b97d31110760ef97e6253afb0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Open a Catalog Item (SP)</sys_name>
+        <sys_package display_value="Cisco BCS Operational Insights" source="x_caci_cisco_bcs">56b8d9362f3310108956ea5ef699b62d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Cisco BCS Operational Insights">56b8d9362f3310108956ea5ef699b62d</sys_scope>
+        <sys_update_name>sys_atf_step_ac85c80b97d31110760ef97e6253afb0</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-11-25 13:24:59</sys_updated_on>
+        <table/>
+        <test display_value="Catalog ATF">9a9b33be97131110760ef97e6253af89</test>
+        <timeout>1970-01-01 00:00:30</timeout>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="DELETE" query="document_key=ac85c80b97d31110760ef97e6253afb0"/>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>ac85c80b97d31110760ef97e6253afb0</document_key>
+        <order>150</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-11-25 13:24:59</sys_created_on>
+        <sys_id>0db5480f97d31110760ef97e6253af03</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-11-25 13:24:59</sys_updated_on>
+        <value>{"Name":"iPhone 6s"}</value>
+        <variable display_value="Query parameters">3a6e5fb15f1013001f1e1f9f2f7313e3</variable>
+    </sys_variable_value>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>ac85c80b97d31110760ef97e6253afb0</document_key>
+        <order>110</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-11-25 13:24:59</sys_created_on>
+        <sys_id>45b5480f97d31110760ef97e6253af03</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-11-25 13:24:59</sys_updated_on>
+        <value>9f12251147132100ba13a5554ee490f4</value>
+        <variable display_value="Page">83d1dadc73e703008e6b0d573cf6a779</variable>
+    </sys_variable_value>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>ac85c80b97d31110760ef97e6253afb0</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-11-25 13:24:59</sys_created_on>
+        <sys_id>81b5480f97d31110760ef97e6253af04</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-11-25 13:24:59</sys_updated_on>
+        <value>81b75d3147032100ba13a5554ee4902b</value>
+        <variable display_value="Portal">3731d6dc73e703008e6b0d573cf6a788</variable>
+    </sys_variable_value>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>ac85c80b97d31110760ef97e6253afb0</document_key>
+        <order>120</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-11-25 13:24:59</sys_created_on>
+        <sys_id>cdb5480f97d31110760ef97e6253af03</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-11-25 13:24:59</sys_updated_on>
+        <value>bd6fa75a4f334200086eeed18110c79e</value>
+        <variable display_value="Catalog Item">ac615adc73e703008e6b0d573cf6a702</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="DELETE" query="table=var__m_atf_input_variable_e81f02dc73e703008e6b0d573cf6a76f^id=ac85c80b97d31110760ef97e6253afb0"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Cisco BCS Operational Insights">56b8d9362f3310108956ea5ef699b62d</application>
+        <file_path/>
+        <instance_id>0190d675dbb877049df22f17d49619d5</instance_id>
+        <instance_name>dev80951</instance_name>
+        <name>sys_atf_step_ac85c80b97d31110760ef97e6253afb0</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step"><sys_atf_step action="INSERT_OR_UPDATE"><active>true</active><copied_from/><description>Open "iPhone 6s" in the "Service Portal" portal with the following query params:
+Name = iPhone 6s
+</description><display_name>Open a Catalog Item (SP)</display_name><inputs/><mugshots_cache_json/><notes/><order>2</order><snapshot/><step_config display_value="Open a Catalog Item (SP)">e81f02dc73e703008e6b0d573cf6a76f</step_config><sys_class_name>sys_atf_step</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2022-11-25 13:24:59</sys_created_on><sys_id>ac85c80b97d31110760ef97e6253afb0</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Open a Catalog Item (SP)</sys_name><sys_package display_value="Cisco BCS Operational Insights" source="x_caci_cisco_bcs">56b8d9362f3310108956ea5ef699b62d</sys_package><sys_policy/><sys_scope display_value="Cisco BCS Operational Insights">56b8d9362f3310108956ea5ef699b62d</sys_scope><sys_update_name>sys_atf_step_ac85c80b97d31110760ef97e6253afb0</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2022-11-25 13:24:59</sys_updated_on><table/><test display_value="Catalog ATF">9a9b33be97131110760ef97e6253af89</test><timeout>1970-01-01 00:00:30</timeout><warning_message/></sys_atf_step><sys_variable_value action="delete_multiple" query="document_key=ac85c80b97d31110760ef97e6253afb0"/><sys_variable_value action="INSERT_OR_UPDATE"><document>sys_atf_step</document><document_key>ac85c80b97d31110760ef97e6253afb0</document_key><order>150</order><sys_class_name>sys_variable_value</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2022-11-25 13:24:59</sys_created_on><sys_id>0db5480f97d31110760ef97e6253af03</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2022-11-25 13:24:59</sys_updated_on><value>{"Name":"iPhone 6s"}</value><variable display_value="Query parameters">3a6e5fb15f1013001f1e1f9f2f7313e3</variable></sys_variable_value><sys_variable_value action="INSERT_OR_UPDATE"><document>sys_atf_step</document><document_key>ac85c80b97d31110760ef97e6253afb0</document_key><order>110</order><sys_class_name>sys_variable_value</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2022-11-25 13:24:59</sys_created_on><sys_id>45b5480f97d31110760ef97e6253af03</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2022-11-25 13:24:59</sys_updated_on><value>9f12251147132100ba13a5554ee490f4</value><variable display_value="Page">83d1dadc73e703008e6b0d573cf6a779</variable></sys_variable_value><sys_variable_value action="INSERT_OR_UPDATE"><document>sys_atf_step</document><document_key>ac85c80b97d31110760ef97e6253afb0</document_key><order>100</order><sys_class_name>sys_variable_value</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2022-11-25 13:24:59</sys_created_on><sys_id>81b5480f97d31110760ef97e6253af04</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2022-11-25 13:24:59</sys_updated_on><value>81b75d3147032100ba13a5554ee4902b</value><variable display_value="Portal">3731d6dc73e703008e6b0d573cf6a788</variable></sys_variable_value><sys_variable_value action="INSERT_OR_UPDATE"><document>sys_atf_step</document><document_key>ac85c80b97d31110760ef97e6253afb0</document_key><order>120</order><sys_class_name>sys_variable_value</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2022-11-25 13:24:59</sys_created_on><sys_id>cdb5480f97d31110760ef97e6253af03</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2022-11-25 13:24:59</sys_updated_on><value>bd6fa75a4f334200086eeed18110c79e</value><variable display_value="Catalog Item">ac615adc73e703008e6b0d573cf6a702</variable></sys_variable_value><sys_element_mapping action="delete_multiple" query="table=var__m_atf_input_variable_e81f02dc73e703008e6b0d573cf6a76f^id=ac85c80b97d31110760ef97e6253afb0"/></record_update>]]></payload>
+        <payload_hash>1161264396</payload_hash>
+        <record_name>Open a Catalog Item (SP)</record_name>
+        <reverted_from/>
+        <source>4e63bb5e972a1110760ef97e6253afe3</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-11-25 13:24:59</sys_created_on>
+        <sys_id>89b5480f97d31110760ef97e6253af06</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>184aef6791f0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-11-25 13:24:59</sys_updated_on>
+        <type>Test Step</type>
+        <update_guid>81b5480fd8d3111074f8c101a6fd9606</update_guid>
+        <update_guid_history>81b5480fd8d3111074f8c101a6fd9606:1161264396</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-11-25 13:32:07</sys_created_on>
+        <sys_db_object display_value="" name="sys_atf_step">sys_atf_step</sys_db_object>
+        <sys_id>47975f23196a407ab31b18ebec672151</sys_id>
+        <sys_metadata>ac85c80b97d31110760ef97e6253afb0</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Open a Catalog Item (SP)</sys_name>
+        <sys_package display_value="Cisco BCS Operational Insights" source="x_caci_cisco_bcs">56b8d9362f3310108956ea5ef699b62d</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Cisco BCS Operational Insights">56b8d9362f3310108956ea5ef699b62d</sys_scope>
+        <sys_scope_delete display_value="">051332bed1934b709318384fcb4b2891</sys_scope_delete>
+        <sys_update_name>sys_atf_step_ac85c80b97d31110760ef97e6253afb0</sys_update_name>
+        <sys_update_version display_value="sys_atf_step_ac85c80b97d31110760ef97e6253afb0">89b5480f97d31110760ef97e6253af06</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-11-25 13:32:07</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Unidentified Inventory Summary" max_length="40" name="x_caci_cisco_bcs_unidentified_inventory_summary" sizeclass="0" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="CDP Sourced Unidentified Device Count" max_length="255" name="cdpsourcedunidentifieddevicecount" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Config Protocol Sourced Unidentified Device Count" max_length="255" name="configprotocolsourcedunidentifieddevicecount" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Config Subnet Sourced Unidentified Device Count" max_length="255" name="configsubnetsourcedunidentifieddevicecount" type="integer"/>
+        <element label="Client ID" max_length="255" name="customer_id" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Deleted Unidentified Device Count" max_length="255" name="deletedunidentifieddevicecount" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="isDeleted" max_length="40" name="isdeleted" type="boolean"/>
+        <element label="Last Updated Timestamp" max_length="40" name="lastupdatedtimestamp" type="glide_date_time"/>
+        <element attributes="edge_encryption_enabled=true" label="Newly Managed Unidentified Device Count" max_length="255" name="newlymanagedunidentifieddevicecount" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="New Unidentified Device Count" max_length="255" name="newunidentifieddevicecount" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Recurring Unidentified Device Count" max_length="255" name="recurringunidentifieddevicecount" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Syslog Sourced Unidentified Device Count" max_length="255" name="syslogsourcedunidentifieddevicecount" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Unidentified Device Count" max_length="255" name="unidentifieddevicecount" type="integer"/>
+    </element>
+</database>
